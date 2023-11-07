@@ -70,6 +70,7 @@
 }
 .app .boards__item .form .buttons {
   display: flex;
+  justify-content: flex-end;
 }
 .app .boards__item .form .buttons .item-btn {
   display: flex;
@@ -123,6 +124,7 @@
   align-items: center;
   padding-left: 10px;
   color: white;
+  cursor: pointer;
 }
 .app .boards__item .add__btn span {
   font-size: 20px;
