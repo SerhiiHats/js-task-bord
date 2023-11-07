@@ -47,6 +47,7 @@ function addTask() {
     form.style.display = 'none';
     btn.style.display = 'flex';
 
+    dragNDrop();
   });
 }
 
@@ -57,11 +58,12 @@ function addBoard() {
   const newBoard = document.createElement('div');
   newBoard.classList.add('boards__item');
   newBoard.innerHTML = `
-   <span contenteditable="true" class="title">Enter name</span>
+   <span contenteditable="true" class="title">Enter name of your board</span>
    <div class="list"></div>
 `
   boards.append(newBoard);
   changeTitle();
+  dragNDrop();
 }
 
 btnAddBoards.addEventListener('click', addBoard);
@@ -76,8 +78,57 @@ function changeTitle() {
 changeTitle();
 
 let draggedItem = null;
-function dragNDrop() {
 
+function dragNDrop() {
+  const listItems = document.querySelectorAll('.list__item')
+  const lists = document.querySelectorAll('.list');
+
+
+  for (const item of listItems) {
+
+    item.addEventListener('dragstart', () => {
+      draggedItem = item;
+      setTimeout(() => {
+        item.style.display = "none";
+      }, 0);
+    });
+
+    item.addEventListener('dragend', () => {
+
+      setTimeout(() => {
+        item.style.display = "block";
+        draggedItem = null;
+      }, 0);
+    });
+
+    item.addEventListener('dblclick', () => {
+      item.remove();
+    });
+  }
+
+  for (const list of lists) {
+  //
+  // }
+  // for (let j = 0; j < lists.length; j++) {
+  //   const list = lists[j];
+    list.addEventListener('dragover', (e) => e.preventDefault());
+
+    list.addEventListener('dragenter', function(e){
+      this.style.backgroundColor = "rgba(155, 155, 155, 0.3)";
+
+    });
+
+    list.addEventListener('dragleave', function(e){
+      this.style.backgroundColor = "rgba(0, 0, 0, 0)";
+    });
+
+    list.addEventListener('drop', function(e){
+      this.style.backgroundColor = "rgba(0, 0, 0, 0)";
+      this.append(draggedItem);
+      // draggedItem = null;
+    });
+
+  }
 
 }
 
