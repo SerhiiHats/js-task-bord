@@ -14,24 +14,16 @@ function addTask() {
   btn.addEventListener('click', () => {
     form.style.display = 'block';
     btn.style.display = 'none';
-    // addBtn.style.display = 'none';
     textarea.focus();
 
     textarea.addEventListener('input', (e) => {
       value = e.target.value;
-
-      // if (value) {
-      //   addBtn.style.display = 'flex';
-      // } else {
-      //   addBtn.style.display = 'none';
-      // }
     })
 
-    textarea.addEventListener('blur', ()=>{
-      if (!value){
+    textarea.addEventListener('blur', () => {
+      if (!value) {
         form.style.display = 'none';
         btn.style.display = 'flex';
-        // addBtn.style.display = 'block';
       }
     })
   });
@@ -45,11 +37,12 @@ function addTask() {
   });
 
   addBtn.addEventListener('click', () => {
-    if(value){
+    if (value) {
       const newItem = document.createElement('div');
       newItem.classList.add('list__item');
       newItem.draggable = true;
       newItem.textContent = value;
+      newItem.innerHTML += ` <i class="fa-regular fa-trash-can"></i>`;
 
       lists[0].append(newItem);
       textarea.value = '';
@@ -66,7 +59,6 @@ function addTask() {
 addTask();
 
 function addBoard() {
-  // const boards = document.querySelector('.boards');
   const newBoard = document.createElement('div');
   newBoard.classList.add('boards__item');
   newBoard.innerHTML = `
@@ -79,7 +71,6 @@ function addBoard() {
   // todo: add correct title
 
   btnAddBoards.before(newBoard);
-  // boards.append(newBoard);
   changeTitle();
   dragNDrop();
 }
@@ -101,7 +92,7 @@ function changeTitle() {
       }
     });
 
-   //------- click icon edit  -----------
+    //------- click icon edit  -----------
     titleText.nextElementSibling.addEventListener('click', (e) => {
       e.target.previousElementSibling.click();
       e.target.previousElementSibling.focus();
@@ -139,22 +130,27 @@ function dragNDrop() {
     item.addEventListener('dblclick', () => {
       item.remove();
     });
+
+    // ------- remove list__item   -----------
+    item.firstElementChild.addEventListener('click', (e) => {
+      e.target.parentElement.remove();
+    });
   }
 
   for (const list of lists) {
 
     list.addEventListener('dragover', (e) => e.preventDefault());
 
-    list.addEventListener('dragenter', function (e) {
+    list.addEventListener('dragenter', function () {
       this.style.backgroundColor = "rgba(155, 155, 155, 0.3)";
 
     });
 
-    list.addEventListener('dragleave', function (e) {
+    list.addEventListener('dragleave', function () {
       this.style.backgroundColor = "rgba(0, 0, 0, 0)";
     });
 
-    list.addEventListener('drop', function (e) {
+    list.addEventListener('drop', function () {
       this.style.backgroundColor = "rgba(0, 0, 0, 0)";
       this.append(draggedItem);
     });
