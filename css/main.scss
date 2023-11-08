@@ -6,7 +6,8 @@
   overflow: hidden;
 }
 
-$mainBorderRadius: 3px;
+$mainBorderRadius: 10px;
+$innerBorderRadius: 5px;
 
 .app {
   display: flex;
@@ -18,6 +19,7 @@ $mainBorderRadius: 3px;
 
   .boards {
     display: flex;
+    align-items: flex-start;
     width: 100%;
 
     &__item {
@@ -26,53 +28,68 @@ $mainBorderRadius: 3px;
       align-self: baseline;
       max-width: 250px;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: #f1f2f4;
       margin: 0 15px;
       padding: 10px;
       transition: .3s all ease;
       border-radius: $mainBorderRadius;
 
       .title {
-        padding: 5px;
-        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #172b4d;
+        min-height: 35px;
+        margin: 2px;
 
-        &:focus {
-          outline: 1px solid rgba(168, 168, 168, .45);
+        &__text {
+          padding: 5px;
+          margin: 0 2px 0 1px;
+          width: calc(100% - 16px);
+          font-size: 14px;
+          font-weight: bold;
+
+          &:focus{
+            outline: 1px solid rgba(168, 168, 168, 1);
+            border-radius: $innerBorderRadius;
+          }
         }
-
       }
+
 
       .list {
         min-height: 40px;
 
         &__item {
-          background-color: #fefefe;
-          border-radius: $mainBorderRadius;
+          background-color: #ffffff;
+          border-radius: $innerBorderRadius;
           padding: 10px;
           text-align: left;
-          margin: 4px 0;
+          margin-bottom: 8px;
           cursor: pointer;
           font-size: 14px;
           outline: none;
           border: none;
+          box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
         }
 
       }
 
       .form {
-        border-radius: $mainBorderRadius;
+        border-radius: $innerBorderRadius;
         margin-top: auto;
         display: none;
 
         .textarea {
           resize: none;
           height: 60px;
-          border-radius: $mainBorderRadius;
+          border-radius: $innerBorderRadius;
           border: none;
           background: white;
           padding: 10px;
           width: 100%;
           font-size: 14px;
+          box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
 
           &:focus {
             outline: none;
@@ -80,102 +97,110 @@ $mainBorderRadius: 3px;
         }
 
         .buttons {
+          margin-top: 6px;
           display: flex;
-          justify-content: flex-end;
+          justify-content: flex-start;
 
           .item-btn {
             display: flex;
             align-items: center;
-            
-            font-family: inherit;
-            font-weight: 500;
-            font-size: 16px;
-            padding: 0.7em 1.4em 0.7em 1.1em;
-            color: white;
-            border: none;
-            letter-spacing: 0.05em;
-            border-radius: $mainBorderRadius;
-            cursor: pointer;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            height: 35px;
-
+            height: 33px;
           }
 
           .item-btn-add {
-            background: #14a73e98;
-            background: linear-gradient(0deg, rgb(14, 124, 45) 0%, rgba(102, 247, 113, 1) 100%);
-            box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
-            width: 100%;
-            margin-right: 10px;
+            width: 120px;
+            background-image: linear-gradient(#42A1EC, #0C66E4);
+            border: 1px solid #0077CC;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            padding: 4px 15px;
+            text-align: center;
+            vertical-align: baseline;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            margin-right: 5px;
+          }
 
-            &:hover {
-              box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
-            }
+          .item-btn-add:hover {
+            background-image: linear-gradient(#1482D0, #0C66E4);
+            border-color: #1482D0;
+          }
 
-            &:active {
-              box-shadow: 0 0.3em 1em -0.5em #14a73e98;
-            }
+          .item-btn-add:active {
+            background-image: linear-gradient(#3D94D9, #0067B9);
+            border-color: #006DBC;
           }
 
           .item-btn-cancel {
-            background: #ad5389;
-            background: linear-gradient(0deg, #b02d7c 0%, rgb(255, 134, 205) 100%);
-            box-shadow: 0 0.7em 1.5em -0.5em #ad5389;
-            flex-shrink: 0;
+            color: #44546f;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            padding: 0 12px;
 
             &:hover {
-              box-shadow: 0 0.5em 1.5em -0.5em #ad5389;
+              background: rgba(155, 155, 155, .3);
             }
 
-            &:active {
-              box-shadow: 0 0.3em 1em -0.5em #ad5389;
-            }
           }
-
 
         }
       }
 
       .add__btn {
         height: 30px;
-        background: rgba(155, 155, 155, .3);
-        border-radius: $mainBorderRadius;
+        border-radius: $innerBorderRadius;
         margin-top: 5px;
         display: flex;
         font-size: 12px;
         align-items: center;
         padding-left: 10px;
-        color: white;
+        color: #44546f;
         cursor: pointer;
 
-        span{
-          font-size: 20px;
+        &:hover{
+          background: rgba(155, 155, 155, .3);
+        }
+
+        i {
+          font-size: 14px;
           margin-right: 10px;
-          color: white;
+          color: #44546f;
         }
       }
     }
   }
 
-  .button-add-boards{
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(19, 30,204, .62);
-    border: none;
-    width: 150px;
-    cursor: pointer;
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translate(-50%);
-    border-radius: $mainBorderRadius;
-    color: white;
-    font-size: 14px;
-  }
 
+
+  .button-add-boards {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    word-spacing: 1px;
+    max-width: 250px;
+    width: 100%;
+    background-color: rgba(100, 100, 100, 0.5);
+    margin: 0 15px;
+    padding: 15px 10px;
+    transition: 0.3s all ease;
+    border-radius: $mainBorderRadius;
+    cursor: pointer;
+    user-select: none;
+
+    i {
+      font-size: 14px;
+      margin-right: 10px;
+      color: #c0c0c0;
+    }
+  }
 }
 

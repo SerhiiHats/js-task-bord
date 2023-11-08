@@ -16,6 +16,7 @@
 }
 .app .boards {
   display: flex;
+  align-items: flex-start;
   width: 100%;
 }
 .app .boards__item {
@@ -24,130 +25,152 @@
   align-self: baseline;
   max-width: 250px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #f1f2f4;
   margin: 0 15px;
   padding: 10px;
   transition: 0.3s all ease;
-  border-radius: 3px;
+  border-radius: 10px;
 }
 .app .boards__item .title {
-  padding: 5px;
-  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #172b4d;
+  min-height: 35px;
+  margin: 2px;
 }
-.app .boards__item .title:focus {
-  outline: 1px solid rgba(168, 168, 168, 0.45);
+.app .boards__item .title__text {
+  padding: 5px;
+  margin: 0 2px 0 1px;
+  width: calc(100% - 16px);
+  font-size: 14px;
+  font-weight: bold;
+}
+.app .boards__item .title__text:focus {
+  outline: 1px solid rgb(168, 168, 168);
+  border-radius: 5px;
 }
 .app .boards__item .list {
   min-height: 40px;
 }
 .app .boards__item .list__item {
-  background-color: #fefefe;
-  border-radius: 3px;
+  background-color: #ffffff;
+  border-radius: 5px;
   padding: 10px;
   text-align: left;
-  margin: 4px 0;
+  margin-bottom: 8px;
   cursor: pointer;
   font-size: 14px;
   outline: none;
   border: none;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
 }
 .app .boards__item .form {
-  border-radius: 3px;
+  border-radius: 5px;
   margin-top: auto;
   display: none;
 }
 .app .boards__item .form .textarea {
   resize: none;
   height: 60px;
-  border-radius: 3px;
+  border-radius: 5px;
   border: none;
   background: white;
   padding: 10px;
   width: 100%;
   font-size: 14px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
 }
 .app .boards__item .form .textarea:focus {
   outline: none;
 }
 .app .boards__item .form .buttons {
+  margin-top: 6px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 .app .boards__item .form .buttons .item-btn {
   display: flex;
   align-items: center;
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 0.7em 1.4em 0.7em 1.1em;
-  color: white;
-  border: none;
-  letter-spacing: 0.05em;
-  border-radius: 3px;
+  height: 33px;
+}
+.app .boards__item .form .buttons .item-btn-add {
+  width: 120px;
+  background-image: linear-gradient(#42A1EC, #0C66E4);
+  border: 1px solid #0077CC;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  padding: 4px 15px;
+  text-align: center;
+  vertical-align: baseline;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  height: 35px;
-}
-.app .boards__item .form .buttons .item-btn-add {
-  background: rgba(20, 167, 62, 0.5960784314);
-  background: linear-gradient(0deg, rgb(14, 124, 45) 0%, rgb(102, 247, 113) 100%);
-  box-shadow: 0 0.7em 1.5em -0.5em rgba(20, 167, 62, 0.5960784314);
-  width: 100%;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 .app .boards__item .form .buttons .item-btn-add:hover {
-  box-shadow: 0 0.5em 1.5em -0.5em rgba(20, 167, 62, 0.5960784314);
+  background-image: linear-gradient(#1482D0, #0C66E4);
+  border-color: #1482D0;
 }
 .app .boards__item .form .buttons .item-btn-add:active {
-  box-shadow: 0 0.3em 1em -0.5em rgba(20, 167, 62, 0.5960784314);
+  background-image: linear-gradient(#3D94D9, #0067B9);
+  border-color: #006DBC;
 }
 .app .boards__item .form .buttons .item-btn-cancel {
-  background: #ad5389;
-  background: linear-gradient(0deg, #b02d7c 0%, rgb(255, 134, 205) 100%);
-  box-shadow: 0 0.7em 1.5em -0.5em #ad5389;
-  flex-shrink: 0;
+  color: #44546f;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  padding: 0 12px;
 }
 .app .boards__item .form .buttons .item-btn-cancel:hover {
-  box-shadow: 0 0.5em 1.5em -0.5em #ad5389;
-}
-.app .boards__item .form .buttons .item-btn-cancel:active {
-  box-shadow: 0 0.3em 1em -0.5em #ad5389;
+  background: rgba(155, 155, 155, 0.3);
 }
 .app .boards__item .add__btn {
   height: 30px;
-  background: rgba(155, 155, 155, 0.3);
-  border-radius: 3px;
+  border-radius: 5px;
   margin-top: 5px;
   display: flex;
   font-size: 12px;
   align-items: center;
   padding-left: 10px;
-  color: white;
+  color: #44546f;
   cursor: pointer;
 }
-.app .boards__item .add__btn span {
-  font-size: 20px;
+.app .boards__item .add__btn:hover {
+  background: rgba(155, 155, 155, 0.3);
+}
+.app .boards__item .add__btn i {
+  font-size: 14px;
   margin-right: 10px;
-  color: white;
+  color: #44546f;
 }
 .app .button-add-boards {
-  height: 35px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: rgba(19, 30, 204, 0.62);
-  border: none;
-  width: 150px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translate(-50%);
-  border-radius: 3px;
-  color: white;
   font-size: 14px;
+  font-weight: bold;
+  color: white;
+  word-spacing: 1px;
+  max-width: 250px;
+  width: 100%;
+  background-color: rgba(100, 100, 100, 0.5);
+  margin: 0 15px;
+  padding: 15px 10px;
+  transition: 0.3s all ease;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.app .button-add-boards i {
+  font-size: 14px;
+  margin-right: 10px;
+  color: #c0c0c0;
 }
 
 /*# sourceMappingURL=main.css.map */
